@@ -10,7 +10,7 @@ def main():
         return val 
 
     def p(l,k):
-        l = np.int32(l)
+        l = np.float32(l)
         k = np.float32(k)
         val = k*np.log(l) - l - logfact(k)
         return np.exp(val)
