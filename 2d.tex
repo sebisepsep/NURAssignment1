@@ -1,0 +1,6 @@
+\subsection*{d)}
+Now we are using \textit{timeit} to time our executions of a, b and c. Each time with ten iterations. From this we can compare the difference between the different algorithms. \\
+Because I wasn't totally sure how to use $\% timeit$ for a whole .py file. I use the powershell command \textit{python -m timeit -n 10 -r 1 -s "import skript" "skript.main()"}. Therefore this code measures how long the python code needs to run 10 times. 
+I excluded the plotting, because this is not necessary for the iteration process itself. The result is that the execution of a and c is 10 times faster than b. 
+The conclusion is therefore that the LU decompusition with the solving of the linear equation is faster that Neville's algorithm. On the other hand the error of Neville's algorithmis constant per interpolation.  \\
+The difference is because the LU decomposition involves a one-time calculation followed by a straightforward forward and backward substitution to obtain the coefficients of the polynomial. The Neville algorithm has a complexity of $O(n^2)$, whereas direct solution via LU decomposition has a complexity of $O(n^3)$. This implies that the Neville algorithm may be faster for larger datasets, as its runtime grows slower than quadratic with the number of points compared to the cubic runtime of LU decomposition.

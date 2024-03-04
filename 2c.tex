@@ -1,0 +1,35 @@
+\subsection*{c) Improvement of a}
+Now we want to improve the a) by iterating over the solution:\\
+With $A x = b$ we found imperfect $x' \approx x + \delta x$.
+\begin{align}
+    Ax' &= A\q{x+ \delta x} = b + \delta b\\
+    A \delta x &= L U \delta x =  \delta b = Ax' - b \quad | \, \text{solve for} \, \delta x\\
+    x '' &= x ' - \delta x
+\end{align}
+Once with only one iteration: 
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.7]{./one.jpg}
+    \caption{This figure shows the improved algoritm from a) with one more iterarion over the solution. }
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.7]{./ten.jpg}
+    \caption{This figure shows the improved algoritm from a) with ten more iterarion over the solution. }
+    \label{fig:}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics{./error.jpg}
+    \caption{This plot shows the difference between the given dataset and the values calculated by the LU decomposition. Once the standard LU decomposition, the error of Neville's algorithm and then with one and ten iteratrions to reduce the error.}
+    \label{fig:err}
+\end{figure}
+What we see here in \ref{fig:err} is that the overall evolution of the error is the same for the LU decompositions and the iterations over the result: With higher x a higher error. The error for neville's algorithm is nearly constant. For the first and the last datapoint (the edges) neville's interpolation has no difference to the original data. This is a property of this algorithm.
+
+
+Out script is given by:
+\lstinputlisting{c2.py}

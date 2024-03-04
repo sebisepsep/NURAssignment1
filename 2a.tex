@@ -1,0 +1,36 @@
+\subsection*{a) LU decomposition}
+Crout's Algorithm is a specific method for performing LU decomposition to solve for c.
+First we set every $\alpha_{ii} = 1$  and $\beta_{oj} = a_{oj}$. Where $a_{ij}$ are the elements from the original matrix. To get the combined LU matrix we calculate: 
+\begin{align}
+    \beta_{ij} &= a_{ij} - \sum_{k=0}^{i-1} \alpha_{ik}\beta_{kj}  \quad \text{for} \, i \leq j \\
+    \alpha_{ij} &= \frac{1}{\beta_{jj}} \q{a_{ij}-\sum_{k=0}^{j-1}\alpha_{ik}\beta_{kj} } \quad \text{for}\, i > j
+\end{align}
+Then we end up with one matrix.\\
+Now we have to solve the system. 
+\begin{align}
+    \underbrace{A}_{LU}x &= b\\
+    L\underbrace{(Ux)}_{=y} &= b\\
+    Ly &= b
+\end{align}
+Then we are doing the forward substitution:
+\begin{align}
+    y_{0} &= \frac{b_0}{\alpha_{00}}= b_0 \,| \, \alpha_{ii} = 1\\
+    y_i &= \frac{1}{\alpha_{ii}} \q{b_i - \sum_{j=0}^{i-1}\alpha_{ij}y_j}
+\end{align}
+And then the backward substitution: 
+\begin{align}
+    x_{N-1} &= \frac{y_{N-1}}{\beta_{(N-1)(N-1)}}\\
+    x_i &= \frac{1}{\beta_{ii}} \q{y_i - \sum_{j = i+1}^{N-1}\beta_{ij}x_j}
+\end{align}
+And evalute there at 1000 equally spaced points.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.7]{./lu.jpg}
+    \caption{Interpolated Data with LU decomposition}
+    \label{fig:enter-label}
+\end{figure}
+
+
+Out script is given by:
+\lstinputlisting{a2.py}

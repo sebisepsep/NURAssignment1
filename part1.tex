@@ -1,0 +1,20 @@
+\section{Poission distribution}
+\begin{align}
+    P_\lambda (k) = \frac{\lambda^k \cdot \exp(-\lambda)}{k!}
+\end{align}
+To avoid overflow change to log-space: 
+\begin{align}
+    \log(P_\lambda (k)) = k \log(\lambda) -\lambda -\log(k!)
+\end{align}
+So far we avoided division, but we still get an overflow for k!. Therefore split up k! = k(k-1)(k-2)... and through the log it is just a sum. 
+\begin{align}
+    \log(P_\lambda (k)) = k \log(\lambda) -\lambda - \sum_{i=0}^{k-1} \log(k-i)
+\end{align}
+And then we can exponentiate the result.
+\begin{align}
+    P_\lambda (k) = \exp\q{\log(P_\lambda (k))} = \exp\q{k \log(\lambda) -\lambda - \sum_{i=0}^{k-1} \log(k-i)}
+\end{align}
+The computed values are:
+\lstinputlisting{part1.txt}
+Out script is given by:
+\lstinputlisting{part1.py}

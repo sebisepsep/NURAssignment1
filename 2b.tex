@@ -1,0 +1,17 @@
+\subsection*{b) Neville's Algorithm}
+In this part we want to apply Neville's Algorithm to the 20 given datapoints and then we interpolate 1000 valuesfor the full Lagrange polynomial and plot all 20 points. \\
+To calculate the steps inbetween, we use the formula:
+\begin{align}
+    p_{01}(x) = \frac{(x_1 - x) p_0 + (x-x_0)p_1}{x_1-x_0}
+\end{align}
+Then we iterate over every interval with $p_i$ the y value to the given $x_i$.\\
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.7]{./neville.jpg}
+    \caption{This plot shows the evaluation of the polynomial from neville's algoritm. }
+    \label{fig:enter-label}
+\end{figure}
+One property of neville's algorithm is that the edge terms stay fixed and the values inbetween get interpolated related to the choosen intervals. That is a important difference to the approach in a). 
+Out script is given by:
+\lstinputlisting{b2.py}
+
